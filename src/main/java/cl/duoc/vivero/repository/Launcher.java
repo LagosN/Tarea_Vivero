@@ -1,4 +1,4 @@
-package cl.duoc.vivero;
+package cl.duoc.vivero.repository;
 
 import javafx.application.Application;
 

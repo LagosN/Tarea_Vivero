@@ -6,9 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+
 public class Vivero {
+    //datos para comboBox
     private static final String INTERIOR = "Interior";
     private static final String EXTERIOR = "Exterior";
+
     private static final String CLASE_ERROR = "campo_error";
 
     // Datos en común
@@ -43,6 +46,9 @@ public class Vivero {
     @FXML private CheckBox despacho;
     @FXML private VBox vBoxExterior;
 
+
+
+
     public void mostrarTipo(ActionEvent event) {
     }
 
@@ -59,8 +65,32 @@ public class Vivero {
     }
 
     public void filtroInterior(ActionEvent event) {
+        if (filtroPlantaInterior.isSelected() && !filtroPlantaExterior.isSelected()) {
+            vBoxInterior.setVisible(true);
+            filtroPlantaExterior.setVisible(false);
+
+
+        }
+
+        if (!filtroPlantaInterior.isSelected()){
+            vBoxInterior.setVisible(false);
+            filtroPlantaExterior.setVisible(true);
+        }
+
     }
 
     public void filtroExterior(ActionEvent event) {
+        if (filtroPlantaExterior.isSelected() && !filtroPlantaInterior.isSelected()) {
+            vBoxExterior.setVisible(true);
+            filtroPlantaInterior.setVisible(false);
+
+        }
+
+        if   (!filtroPlantaExterior.isSelected()) {
+            vBoxExterior.setVisible(false);
+            filtroPlantaInterior.setVisible(true);
+
+
+        }
     }
 }

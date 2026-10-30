@@ -45,7 +45,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>cl.duoc.vivero.Launcher</mainClass>
+                    <mainClass>cl.duoc.vivero.repository.Launcher</mainClass>
                 </configuration>
             </plugin>
         </plugins>

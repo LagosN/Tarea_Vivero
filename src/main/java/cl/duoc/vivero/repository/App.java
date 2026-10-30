@@ -1,5 +1,6 @@
-package cl.duoc.vivero;
+package cl.duoc.vivero.repository;
 
+import cl.duoc.vivero.controlador.Controlador.Vivero;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,5 +30,6 @@ public class App extends Application {
         stage.setTitle("Vivero Hojas del Sur");
         stage.setScene(new Scene(root));
         stage.show();
+
     }
 }

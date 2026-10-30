@@ -25,6 +25,7 @@
             <TextField fx:id="cantidad" layoutX="10.0" layoutY="111.0" text="Entre 1 y 300" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
+                  <Label text="Tipo Planta" />
                   <CheckBox fx:id="filtroPlantaInterior" mnemonicParsing="false" onAction="#filtroInterior" text="Interior" />
                   <CheckBox fx:id="filtroPlantaExterior" mnemonicParsing="false" onAction="#filtroExterior" text="Exterior" />
                </children>
@@ -34,13 +35,13 @@
       <Button fx:id="registroPlanta" layoutX="32.0" layoutY="456.0" mnemonicParsing="false" onAction="#registrodePlanta" text="Registrar" />
       <Button fx:id="eliminarPlanta" layoutX="680.0" layoutY="414.0" mnemonicParsing="false" onAction="#eliminarP" text="Eliminar" />
       <Label fx:id="mensajeUsuario" layoutX="343.0" layoutY="54.0" prefHeight="17.0" prefWidth="220.0" text="Mensaje a usuario" />
-      <VBox fx:id="vBoxExterior" layoutX="26.0" layoutY="236.0" prefHeight="44.0" prefWidth="181.0">
+      <VBox fx:id="vBoxExterior" layoutX="26.0" layoutY="236.0" prefHeight="44.0" prefWidth="181.0" visible="false">
          <children>
             <CheckBox fx:id="heladas" mnemonicParsing="false" onAction="#heladasPlanta" text="Heladas" />
             <CheckBox fx:id="despacho" mnemonicParsing="false" onAction="#despachoPlanta" text="Despacho" />
          </children>
       </VBox>
-      <VBox fx:id="vBoxInterior" layoutX="26.0" layoutY="280.0" prefHeight="52.0" prefWidth="181.0">
+      <VBox fx:id="vBoxInterior" layoutX="26.0" layoutY="280.0" prefHeight="52.0" prefWidth="181.0" visible="false">
          <children>
             <TextField fx:id="volumenPlantaInterior" text="Volumen en litros" />
             <Label text="Volumen" />

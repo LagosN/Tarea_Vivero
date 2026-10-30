@@ -18,11 +18,11 @@
          <children>
             <ComboBox fx:id="tipoPlanta" onAction="#mostrarTipo" prefWidth="150.0" promptText="Tipo de planta" />
             <Label layoutX="10.0" layoutY="10.0" text="Nombre" />
-            <TextField fx:id="nombrePlanta" layoutX="10.0" layoutY="27.0" text="Ej: Helecho" />
+            <TextField fx:id="nombrePlanta" layoutX="10.0" layoutY="27.0" promptText="Ej: Helecho" />
             <Label layoutX="10.0" layoutY="52.0" text="Altura" />
-            <TextField fx:id="alturaPlanta" layoutX="10.0" layoutY="69.0" text="Altura en cm 1 entre 300" />
+            <TextField fx:id="alturaPlanta" layoutX="10.0" layoutY="69.0" promptText="Altura en cm 1 entre 300" />
             <Label layoutX="10.0" layoutY="94.0" text="Cantidad" />
-            <TextField fx:id="cantidad" layoutX="10.0" layoutY="111.0" text="Entre 1 y 300" />
+            <TextField fx:id="cantidad" layoutX="10.0" layoutY="111.0" promptText="Entre 1 y 300" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Tipo Planta" />
@@ -43,7 +43,7 @@
       </VBox>
       <VBox fx:id="vBoxInterior" layoutX="26.0" layoutY="280.0" prefHeight="52.0" prefWidth="181.0" visible="false">
          <children>
-            <TextField fx:id="volumenPlantaInterior" text="Volumen en litros" />
+            <TextField fx:id="volumenPlantaInterior" promptText="Volumen en litros" />
             <Label text="Volumen" />
          </children></VBox>
    </children>

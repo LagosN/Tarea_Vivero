@@ -4,7 +4,12 @@ import cl.duoc.vivero.model.Planta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+//import javafx.scene.control.label;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+import javafx.scene.control.CheckBox;
+
 
 
 public class MainController {
@@ -14,12 +19,14 @@ public class MainController {
 
     private static final String CLASE_ERROR = "campo_error";
 
+    @FXML private Label mensajeUsuario;
+
+    @FXML private  Button limpiar;
+
 
     // Datos en común
-    @FXML private CheckBox filtroPlantaExterior;
-    @FXML private CheckBox filtroPlantaInterior;
-    @FXML private VBox vBoxComun;
-    @FXML private ComboBox <String> tipoPlanta;
+
+    @FXML private ChoiceBox <String> tipoPlanta;
     @FXML private TextField nombrePlanta;
     @FXML private TextField alturaPlanta;
     @FXML private TextField cantidad;
@@ -38,7 +45,9 @@ public class MainController {
     // Especiales
     @FXML private Button registroPlanta;
     @FXML private Button eliminarPlanta;
-    @FXML private Label mensajeUsuario;
+    @FXML private CheckBox filtroPlantaExterior;
+    @FXML private CheckBox filtroPlantaInterior;
+
 
     //Dato planta Interior
     @FXML private VBox vBoxInterior;
@@ -50,12 +59,23 @@ public class MainController {
     @FXML private VBox vBoxExterior;
 
 
-    @FXML private void initialize() {
+    @FXML
+    private void initialize() {
 
         tipoPlanta.getItems().addAll(INTERIOR, EXTERIOR);
 
     }
 
+    @FXML
+    public void onGuardar(){}
+    @FXML
+    public void onLimpiar(){
+        this.tipoPlanta.setValue("");
+        this.nombrePlanta.setText("");
+        this.alturaPlanta.setText("");
+        this.cantidad.setText("");
+    }
+    @FXML
 
     public void mostrarTipo(ActionEvent event) {
     }
@@ -108,5 +128,8 @@ public class MainController {
 
 
         }
+    }
+
+    public void limpiar(ActionEvent event) {
     }
 }

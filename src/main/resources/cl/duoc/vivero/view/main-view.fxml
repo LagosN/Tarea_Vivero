@@ -3,8 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="593.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="cl.duoc.vivero.controller.MainController">
+<AnchorPane prefHeight="593.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.vivero.controller.MainController">
    <children>
       <TableView fx:id="tablaPlantas" layoutX="261.0" layoutY="71.0" prefHeight="343.0" prefWidth="496.0">
         <columns>
@@ -19,7 +18,7 @@
       </TableView>
       <VBox fx:id="vBoxComun" layoutX="26.0" layoutY="54.0" prefHeight="182.0" prefWidth="220.0">
          <children>
-            <ComboBox fx:id="tipoPlanta" onAction="#mostrarTipo" prefWidth="150.0" promptText="Tipo de planta" />
+            <ChoiceBox fx:id="tipoPlanta" prefWidth="150.0" />
             <Label layoutX="10.0" layoutY="10.0" text="Nombre" />
             <TextField fx:id="nombrePlanta" layoutX="10.0" layoutY="27.0" promptText="Ej: Helecho" />
             <Label layoutX="10.0" layoutY="52.0" text="Altura" />
@@ -49,5 +48,6 @@
             <TextField fx:id="volumenPlantaInterior" promptText="Volumen en litros" />
             <Label text="Volumen" />
          </children></VBox>
+      <Button fx:id="limpiar" layoutX="104.0" layoutY="456.0" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
    </children>
 </AnchorPane>

@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="593.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.vivero.controller.MainController">
+<AnchorPane prefHeight="593.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cl.duoc.vivero.controller.MainController">
    <children>
       <TableView fx:id="tablaPlantas" layoutX="261.0" layoutY="71.0" prefHeight="343.0" prefWidth="496.0">
         <columns>

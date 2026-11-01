@@ -1,10 +1,10 @@
 package cl.duoc.vivero.repository;
 
-import cl.duoc.vivero.controlador.Controlador.Vivero;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -26,10 +26,14 @@ public class App extends Application {
         if (vista == null) {
             throw new IllegalStateException("No se encontró la vista principal: " + VISTA_PRINCIPAL);
         }
+
+
         Parent root = FXMLLoader.load(vista);
         stage.setTitle("Vivero Hojas del Sur");
         stage.setScene(new Scene(root));
         stage.show();
+
+
 
     }
 }

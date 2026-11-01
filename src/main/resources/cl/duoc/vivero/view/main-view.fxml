@@ -3,18 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="593.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.vivero.controlador.Controlador.Vivero">
+<AnchorPane prefHeight="593.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.vivero.controller.MainController">
    <children>
-      <TableView fx:id="tablaPlantas" layoutX="343.0" layoutY="71.0" prefHeight="343.0" prefWidth="396.0">
+      <TableView fx:id="tablaPlantas" layoutX="261.0" layoutY="71.0" prefHeight="343.0" prefWidth="496.0">
         <columns>
           <TableColumn fx:id="tipoMostrado" prefWidth="75.0" text="Tipo" />
             <TableColumn fx:id="nombreMostrado" prefWidth="75.0" text="Nombre" />
             <TableColumn fx:id="AlturaMostrada" prefWidth="75.0" text="Altura(cm)" />
             <TableColumn fx:id="cantidadMostrada" prefWidth="75.0" text="Cantidad" />
             <TableColumn fx:id="precioMostrado" prefWidth="95.0" text="Precio unitario" />
+            <TableColumn fx:id="heladaTabla" prefWidth="95.0" text="Heladas" visible="false" />
+            <TableColumn fx:id="volumenTabla" editable="false" prefWidth="95.0" text="Volumen" visible="false" />
         </columns>
       </TableView>
-      <VBox fx:id="vBoxComun" layoutX="26.0" layoutY="54.0" prefHeight="182.0" prefWidth="181.0">
+      <VBox fx:id="vBoxComun" layoutX="26.0" layoutY="54.0" prefHeight="182.0" prefWidth="220.0">
          <children>
             <ComboBox fx:id="tipoPlanta" onAction="#mostrarTipo" prefWidth="150.0" promptText="Tipo de planta" />
             <Label layoutX="10.0" layoutY="10.0" text="Nombre" />
@@ -34,7 +36,7 @@
       </VBox>
       <Button fx:id="registroPlanta" layoutX="32.0" layoutY="456.0" mnemonicParsing="false" onAction="#registrodePlanta" text="Registrar" />
       <Button fx:id="eliminarPlanta" layoutX="680.0" layoutY="414.0" mnemonicParsing="false" onAction="#eliminarP" text="Eliminar" />
-      <Label fx:id="mensajeUsuario" layoutX="343.0" layoutY="54.0" prefHeight="17.0" prefWidth="220.0" text="Mensaje a usuario" />
+      <Label fx:id="mensajeUsuario" layoutX="261.0" layoutY="54.0" prefHeight="17.0" prefWidth="220.0" text="Mensaje a usuario" />
       <VBox fx:id="vBoxExterior" layoutX="26.0" layoutY="236.0" prefHeight="44.0" prefWidth="181.0" visible="false">
          <children>
             <CheckBox fx:id="heladas" mnemonicParsing="false" onAction="#heladasPlanta" text="Heladas" />

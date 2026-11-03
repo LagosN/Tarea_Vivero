@@ -18,32 +18,28 @@
       </TableView>
       <VBox fx:id="vBoxComun" layoutX="26.0" layoutY="54.0" prefHeight="182.0" prefWidth="220.0">
          <children>
-            <ChoiceBox fx:id="tipoPlanta" prefWidth="150.0" />
+            <Label text="Tipo de Planta" />
+            <ChoiceBox fx:id="tipoPlanta" onAction="#OnSeleccionarTipo" prefWidth="150.0" />
             <Label layoutX="10.0" layoutY="10.0" text="Nombre" />
             <TextField fx:id="nombrePlanta" layoutX="10.0" layoutY="27.0" promptText="Ej: Helecho" />
             <Label layoutX="10.0" layoutY="52.0" text="Altura" />
             <TextField fx:id="alturaPlanta" layoutX="10.0" layoutY="69.0" promptText="Altura en cm 1 entre 300" />
             <Label layoutX="10.0" layoutY="94.0" text="Cantidad" />
             <TextField fx:id="cantidad" layoutX="10.0" layoutY="111.0" promptText="Entre 1 y 300" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Tipo Planta" />
-                  <CheckBox fx:id="filtroPlantaInterior" mnemonicParsing="false" onAction="#filtroInterior" text="Interior" />
-                  <CheckBox fx:id="filtroPlantaExterior" mnemonicParsing="false" onAction="#filtroExterior" text="Exterior" />
-               </children>
-            </HBox>
          </children>
       </VBox>
       <Button fx:id="registroPlanta" layoutX="32.0" layoutY="456.0" mnemonicParsing="false" onAction="#registrodePlanta" text="Registrar" />
       <Button fx:id="eliminarPlanta" layoutX="680.0" layoutY="414.0" mnemonicParsing="false" onAction="#eliminarP" text="Eliminar" />
       <Label fx:id="mensajeUsuario" layoutX="261.0" layoutY="54.0" prefHeight="17.0" prefWidth="220.0" text="Mensaje a usuario" />
-      <VBox fx:id="vBoxExterior" layoutX="26.0" layoutY="236.0" prefHeight="44.0" prefWidth="181.0" visible="false">
+      <VBox fx:id="vBoxExterior" layoutX="26.0" layoutY="236.0" prefHeight="44.0" prefWidth="181.0">
          <children>
             <CheckBox fx:id="heladas" mnemonicParsing="false" onAction="#heladasPlanta" text="Heladas" />
             <CheckBox fx:id="despacho" mnemonicParsing="false" onAction="#despachoPlanta" text="Despacho" />
+            <Label text="Especie" />
+            <TextField fx:id="especieText" />
          </children>
       </VBox>
-      <VBox fx:id="vBoxInterior" layoutX="26.0" layoutY="280.0" prefHeight="52.0" prefWidth="181.0" visible="false">
+      <VBox fx:id="vBoxInterior" layoutX="26.0" layoutY="333.0" prefHeight="52.0" prefWidth="181.0">
          <children>
             <TextField fx:id="volumenPlantaInterior" promptText="Volumen en litros" />
             <Label text="Volumen" />

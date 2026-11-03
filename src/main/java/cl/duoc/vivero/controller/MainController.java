@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.CheckBox;
-
+import javafx.scene.paint.Color;
 
 
 public class MainController {
@@ -20,11 +20,14 @@ public class MainController {
     private static final String INTERIOR = "Interior";
     private static final String EXTERIOR = "Exterior";
 
-    private static final String CLASE_ERROR = "campo_error";
-
-    @FXML private Label mensajeUsuario;
-
-    @FXML private  Button limpiar;
+    // CONSTANTE PARA ALERTLABEL
+    public final static String ALERTA_EXITO = "Registro exitoso";
+    public final static String ALERTA_NO_VALIDO = "Dato no valido";
+    public final static String ALERTA_ELIMINADO = "Registro eliminado";
+    public final static String ALERTA_NO_SELECCIONADO = "Falta seleccion";
+    public final static String ALERTA_LECTURA = "Error al leer archivo";
+    public final static String ALERTA_ESCRITURA = "Error al escribir archivo";
+    public final static String ALERTA_DEFAULT = "Sin Alerta";
 
 
     // Datos en común
@@ -46,10 +49,11 @@ public class MainController {
     @FXML private TableColumn volumenTabla;
 
     // Especiales
+    @FXML private Label mensajeUsuario;
+    @FXML private  Button limpiar;
     @FXML private Button registroPlanta;
     @FXML private Button eliminarPlanta;
-    @FXML private CheckBox filtroPlantaExterior;
-    @FXML private CheckBox filtroPlantaInterior;
+
 
 
     //Dato planta Interior
@@ -59,6 +63,7 @@ public class MainController {
     // Dato planta Exterior
     @FXML private CheckBox heladas;
     @FXML private CheckBox despacho;
+    @FXML private TextField especieText;
     @FXML private VBox vBoxExterior;
 
     // Datos internos del controllador
@@ -67,28 +72,131 @@ public class MainController {
 
     @FXML
     private void initialize() {
-        tipoPlanta.getItems().addAll(INTERIOR, EXTERIOR);
+        this.tipoPlanta.getItems().addAll(INTERIOR, EXTERIOR);
+        // Otra forma de agregar
+        //this.tipoPlanta.getItems().add(INTERIOR)
+        //this.tipoPlanta.getItems().add(EXTERIOR)
+        this.mensajeUsuario.setVisible(false);
+        // Campos interiores
+        this.volumenPlantaInterior.setDisable(true);
+        // Campos exteriores
+        this.especieText.setDisable(true);
+        this.heladas.setSelected(false);
+        this.despacho.setSelected(false);
         this.repository.cargar();
         //TODO: Refactorizar
         plantas.setAll(this.repository.getList());
     }
 
-    @FXML
-    public void onGuardar(){}
-    @FXML
-    public void onLimpiar(){
+    public void tipoPanta(ActionEvent actionEvent) {}
+
+
+
+    @FXML public void limpiar(){
         this.tipoPlanta.setValue("");
         this.nombrePlanta.setText("");
         this.alturaPlanta.setText("");
         this.cantidad.setText("");
+        this.setAlertaLabelMensaje(ALERTA_DEFAULT, "");
+        // Campos interiores
+        this.volumenPlantaInterior.setDisable(true);
+        // Campos exteriores
+        this.especieText.setDisable(false);
+        this.heladas.setSelected(false);
+        this.despacho.setSelected(false);
+
+
+
+    }
+    @FXML public void OnSeleccionarTipo() {
+        String tipo = this.tipoPlanta.getValue();
+        switch (tipo) {
+            //Por que no es Interior String ( es INTERIOR)
+            case INTERIOR:
+                this.volumenPlantaInterior.setDisable(false);
+                // Campos exteriores
+                this.especieText.setDisable(true);
+                this.heladas.setSelected(false);
+                this.despacho.setSelected(false);
+                break;
+            case EXTERIOR:
+                // Campos interiores
+                this.volumenPlantaInterior.setDisable(true);
+                // Campos exteriores
+                this.especieText.setDisable(false);
+                this.heladas.setSelected(false);
+                this.despacho.setSelected(false);
+
+                break;
+            default:
+                // Campos interiores
+                this.volumenPlantaInterior.setDisable(true);
+                // Campos exteriores
+                this.especieText.setDisable(true);
+                this.heladas.setSelected(false);
+                this.despacho.setSelected(false);
+                this.setAlertaLabelMensaje(ALERTA_NO_SELECCIONADO, "Campo Seleccionar Tipo:");
+
+
+                //
+
+        }
+    }
+    @FXML public void registrodePlanta() {
+        // se crea variable para almacenamiento
+        Planta planta;
+        try {
+            //Se asignan las variables de los controladores generales
+            String nombre = this.nombrePlanta.getText();
+            String altura = this.alturaPlanta.getText();
+            String cantidad = this.cantidad.getText();
+            String tipo = this.tipoPlanta.getValue();
+
+        }catch (IllegalArgumentException e){
+            this.setAlertaLabelMensaje(ALERTA_NO_VALIDO, e.getMessage());
+
+        }
+
+
+
+    }
+    private void setAlertaLabelMensaje( String tipo,String mensaje){
+        if (mensaje.trim().isBlank()){
+            mensaje = tipo;
+        }else{
+            mensaje = tipo + " " + mensaje;
+        }
+        switch (tipo){
+            case ALERTA_EXITO:
+            case ALERTA_ELIMINADO:
+                this.mensajeUsuario.setVisible(true);
+                this.mensajeUsuario.setTextFill(Color.GREEN);
+
+                break;
+
+            case ALERTA_ESCRITURA:
+            case ALERTA_NO_SELECCIONADO:
+            case ALERTA_LECTURA:
+            case ALERTA_NO_VALIDO:
+                this.mensajeUsuario.setVisible(true);
+                this.mensajeUsuario.setTextFill(Color.RED);
+
+                break;
+            default:
+                this.mensajeUsuario.setVisible(false);
+
+
+
+        }
+        this.mensajeUsuario.setText(mensaje);
+
     }
     @FXML
 
     public void mostrarTipo(ActionEvent event) {
     }
 
-    public void registrodePlanta(ActionEvent event) {
-    }
+
 
     public void eliminarP(ActionEvent event) {
     }
@@ -99,43 +207,8 @@ public class MainController {
     public void despachoPlanta(ActionEvent event) {
     }
 
-    public void filtroInterior(ActionEvent event) {
-        if (tipoPlanta.getItems().contains(INTERIOR)) {
-            vBoxInterior.setVisible(true);
-            filtroPlantaExterior.setVisible(false);
-            volumenTabla.setVisible(true);
-
-        }
-
-        if (!filtroPlantaInterior.isSelected()){
-            vBoxInterior.setVisible(false);
-            filtroPlantaExterior.setVisible(true);
-            volumenTabla.setVisible(false);
-
-        }
-
-    }
-
-    public void filtroExterior(ActionEvent event) {
-        if (tipoPlanta.getItems().contains(EXTERIOR)) {
-
-            vBoxExterior.setVisible(true);
-            filtroPlantaInterior.setVisible(false);
-            heladaTabla.setVisible(true);
-
-        }
 
 
 
-        if   (!filtroPlantaExterior.isSelected()) {
-            vBoxExterior.setVisible(false);
-            filtroPlantaInterior.setVisible(true);
-            heladaTabla.setVisible(false);
-
-
-        }
-    }
-
-    public void limpiar(ActionEvent event) {
-    }
 }
+

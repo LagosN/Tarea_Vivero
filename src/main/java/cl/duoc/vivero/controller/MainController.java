@@ -1,6 +1,9 @@
 package cl.duoc.vivero.controller;
 
 import cl.duoc.vivero.model.Planta;
+import cl.duoc.vivero.repository.PlantaRepository;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -58,12 +61,16 @@ public class MainController {
     @FXML private CheckBox despacho;
     @FXML private VBox vBoxExterior;
 
+    // Datos internos del controllador
+    private final PlantaRepository repository = new PlantaRepository();
+    private ObservableList<Planta> plantas = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
-
         tipoPlanta.getItems().addAll(INTERIOR, EXTERIOR);
-
+        this.repository.cargar();
+        //TODO: Refactorizar
+        plantas.setAll(this.repository.getList());
     }
 
     @FXML
@@ -94,7 +101,6 @@ public class MainController {
 
     public void filtroInterior(ActionEvent event) {
         if (tipoPlanta.getItems().contains(INTERIOR)) {
-
             vBoxInterior.setVisible(true);
             filtroPlantaExterior.setVisible(false);
             volumenTabla.setVisible(true);

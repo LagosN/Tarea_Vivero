@@ -1,4 +1,4 @@
-package cl.duoc.vivero.repository;
+package cl.duoc.vivero;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
